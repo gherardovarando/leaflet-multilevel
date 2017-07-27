@@ -1,0 +1,26 @@
+{
+  "name": "leaflet-multislice",
+  "version": "0.0.1",
+  "description": "multislice leaflet layer",
+  "main": "leaflet-multislice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gherardovarando/leaflet-multislice.git"
+  },
+  "keywords": [
+    "leaflet",
+    "slice",
+    "map",
+    "tilesLayer",
+    "layer"
+  ],
+  "author": "gherardo varando <gherardo.varando@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gherardovarando/leaflet-multislice/issues"
+  },
+  "homepage": "https://github.com/gherardovarando/leaflet-multislice#readme"
+}
