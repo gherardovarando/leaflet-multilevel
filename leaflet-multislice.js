@@ -24,12 +24,13 @@ if (L != undefined) {
 
   L.TileLayer.MultiSlice = L.TileLayer.extend({
     onAdd: function(map) {
-      this._saved = {};
       L.TileLayer.prototype.onAdd.call(this, map);
       map.on('slicechange', this.redraw, this);
+
     },
 
     onRemove: function(map) {
+      L.TileLayer.prototype.onRemove.call(this, map);
       map.off('slicechange', this.redraw, this);
     },
 
@@ -49,7 +50,6 @@ if (L != undefined) {
         }
         data['-y'] = invertedY;
       }
-
       return L.Util.template(this._url, L.extend(data, this.options));
     }
   });
