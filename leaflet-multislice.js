@@ -170,6 +170,7 @@ if (L != undefined) {
 
 
   L.Map.addInitHook('addHandler', 'multislice', L.MultiSliceHandler);
+
   L.Map.prototype.setSlice = function(slice) {
     if (this.options.multislice) {
       let max = this.options.maxSlice;
