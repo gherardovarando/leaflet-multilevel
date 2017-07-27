@@ -25,12 +25,16 @@ if (L != undefined) {
   L.TileLayer.MultiSlice = L.TileLayer.extend({
     onAdd: function(map) {
       L.TileLayer.prototype.onAdd.call(this, map);
+      map._layersMaxSlice.push(this.options.maxSlice);
+      map._layersMinSlice.push(this.options.minSlice);
       map.on('slicechange', this.redraw, this);
-
+      this.redraw();
     },
 
     onRemove: function(map) {
       L.TileLayer.prototype.onRemove.call(this, map);
+      map._layersMaxSlice.splice(map._layersMaxSlice.indexOf(this.options.maxSlice),1);
+      map._layersMinSlice.splice(map._layersMaxSlice.indexOf(this.options.minSlice),1);
       map.off('slicechange', this.redraw, this);
     },
 
@@ -41,7 +45,7 @@ if (L != undefined) {
         x: coords.x,
         y: coords.y,
         z: this._getZoomForUrl(),
-        slice: Math.min(Math.max(this._map._slice || 0, this.options.minSlice), this.options.maxSlice)
+        slice: this._map._slice
       };
       if (this._map && !this._map.options.crs.infinite) {
         var invertedY = this._globalTileRange.max.y - coords.y;
@@ -104,8 +108,9 @@ if (L != undefined) {
     addHooks: function() {
       L.DomEvent.on(window, 'keydown', this._keyDown, this);
       L.DomEvent.on(window, 'keyup', this._keyUp, this);
-
       this._map._slice = this._map.options.minSlice || 0;
+      this._map._layersMaxSlice = [];
+      this._map._layersMinSlice = [];
       if (this._map.options.sliceControl) {
         this._map.sliceControl = L.control.slice(this._map.options.sliceControl);
         this._map.addControl(this._map.sliceControl);
@@ -122,11 +127,19 @@ if (L != undefined) {
     _keyDown: function(e) {
       if (!e.ctrlKey) return;
       if (e.keyCode == 38) {
-        if (this._map.options.maxSlice && this._map._slice >= this._map.options.maxSlice) return;
+        let max = this._map.options.maxSlice;
+        if (typeof max === 'undefined') {
+          max = Math.max(...this._map._layersMaxSlice);
+        }
+        if (max && this._map._slice >= max) return;
         this._map.fire('startslicechange');
       }
       if (e.keyCode == 40) {
-        if (this._map.options.minSlice && this._map._slice <= this._map.options.minSlice) return;
+        let min = this._map.options.minSlice;
+        if (typeof min === 'undefined') {
+          min = Math.min(...this._map._layersMinSlice);
+        }
+        if (min && this._map._slice <= min) return;
         this._map.fire('startslicechange');
       }
     },
@@ -134,12 +147,20 @@ if (L != undefined) {
     _keyUp: function(e) {
       if (!e.ctrlKey) return;
       if (e.keyCode == 38) {
-        if (this._map.options.maxSlice && this._map._slice >= this._map.options.maxSlice) return;
+        let max = this._map.options.maxSlice;
+        if (typeof max === 'undefined') {
+          max = Math.max(...this._map._layersMaxSlice);
+        }
+        if (max && this._map._slice >= max) return;
         this._map._slice++;
         this._map.fire('slicechange');
       }
       if (e.keyCode == 40) {
-        if (this._map.options.minSlice && this._map._slice <= this._map.options.minSlice) return;
+        let min = this._map.options.minSlice;
+        if (typeof min === 'undefined') {
+          min = Math.min(...this._map._layersMinSlice);
+        }
+        if (min && this._map._slice <= min) return;
         this._map._slice--;
         this._map.fire('slicechange');
       }
@@ -149,5 +170,20 @@ if (L != undefined) {
 
 
   L.Map.addInitHook('addHandler', 'multislice', L.MultiSliceHandler);
+  L.Map.prototype.setSlice = function(slice) {
+    if (this.options.multislice) {
+      let max = this.options.maxSlice;
+      if (typeof max === 'undefined') {
+        max = Math.max(...this._layersMaxSlice);
+      }
+      let min = this.options.minSlice;
+      if (typeof min === 'undefined') {
+        min = Math.min(...this._layersMinSlice);
+      }
+      let s = Math.min(Math.max(slice, min), max);
+      this._slice = s;
+      this.fire("slicechange");
+    }
+  }
 
 }
