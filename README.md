@@ -2,16 +2,50 @@
 
 ## demo at <https://gherardovarando.github.io/leaflet-multislice/demo>
 
+Multi slice tileLayer for leaflet, the plugin define new methods for the Map object, a new control and a new type of tileLayer.
+The plugin is been developed to visualize mutlislice maps for example created from bio images (confocal microscopy).
 
 
 ## API
 
-### Creation
+To be able to use the ``TileLayer.MultiSlice`` it is necessary to set the ``multislice`` option to ``true`` in the map creation options.
+Moreover the ``sliceControl`` option controls the presence and position of the slice control.
+
+### ``TileLayer.MultiSlice``
 
 
+
+### `map` Methods
+
+New methods for the ``map`` object
+
+- #### ``getSlice()``
+  Returns the current slice index
+
+- #### ``setSlice(s)``
+  Set the slice value to ``s`` if compatible with the limits.
+
+  Returns ``this``.
+
+- #### ``setMaxSlice(max)``
+   Set the max slice value to ``max``.
+
+   Returns ``this``.
+
+- #### ``setMinSlice(max)``
+  Set the min slice value to ``min``.
+
+  Returns ``this``.
 
 #### Events
 
+The following events are fired by the ``map`` object
+
+- #### ``startslicechange``
+  Emitted when the user press down one of the arrow up/down key with the ctrl key.
+
+- #### ``slicechange``
+   Emitted when the user release the up/down arrow key and the slice value is increased or decreased. The event is not fired if the slice value is not changed (due to maxSlice, minSlice limits)  
 
 ### LICENSE
 
