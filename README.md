@@ -15,7 +15,8 @@ let map = L.map('map', {
   }
   });
 
-let mslayer = L.tileLayer.multiSlice('https://gherardovarando.github.io/leaflet-multislice/demo/GAD67_tiles/slice{slice}/{z}/{x}/{y}.png',{
+let url = 'https://gherardovarando.github.io/leaflet-multislice/demo/GAD67_tiles/slice{slice}/{z}/{x}/{y}.png';
+let mslayer = L.tileLayer.multiSlice(url,{
    minSlice: 1,
    maxSlice: 43,
    tileSize: L.point([88,256])
