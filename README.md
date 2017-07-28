@@ -13,8 +13,17 @@ Moreover the ``sliceControl`` option controls the presence and position of the s
 
 ### ``TileLayer.MultiSlice``
 
+#### Creation
+
+##### ``L.tileLayer.multiSlice(urlTemplate, options)``
+
+- ``urlTemplate`` a string of the following form ``'http://{s}.somedomain.com/{foo}/{slice}/{z}/{x}/{y}.png'``
+- ``options`` as  TileLAyer options and moreover:
+  - ``maxSlice``
+  - ``minSlice``
 
 
+***
 ### `map` Methods
 
 New methods for the ``map`` object
