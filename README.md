@@ -5,6 +5,27 @@
 Multi slice tileLayer for leaflet, the plugin define new methods for the Map object, a new control and a new type of tileLayer.
 The plugin is been developed to visualize mutlislice maps for example created from bio images (confocal microscopy).
 
+## Usage
+
+```
+let map = L.map('map', {
+  multislice: true,
+  sliceControl: {
+    position: 'bottomleft'
+  }
+  });
+
+let mslayer = L.tileLayer.multiSlice('https://gherardovarando.github.io/leaflet-multislice/demo/GAD67_tiles/slice{slice}/{z}/{x}/{y}.png',{
+   minSlice: 1,
+   maxSlice: 43,
+   tileSize: L.point([88,256])
+  });
+
+mslayer.addTo(map);
+map.fitWorld();
+map.setSlice(10);
+
+```
 
 ## API
 
@@ -46,7 +67,7 @@ New methods for the ``map`` object
 
   Returns ``this``.
 
-#### Events
+### `map` Events
 
 The following events are fired by the ``map`` object
 
