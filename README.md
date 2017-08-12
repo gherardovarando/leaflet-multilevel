@@ -1,8 +1,8 @@
 ## by gherardo.varando <gherardo.varando@gmail.com>
 
-## demo at <https://gherardovarando.github.io/leaflet-multislice/demo>
+## demo at <https://gherardovarando.github.io/leaflet-multilevel/demo>
 
-Multi slice tileLayer for leaflet, the plugin define new methods for the Map object, a new control and a new type of tileLayer.
+Multi level plugin for leaflet, the plugin define new methods for the Map object, a new control and new types of layers (``L.layerName.ml``).
 The plugin is been developed to visualize mutlislice maps for example created from bio images (confocal microscopy).
 
 ## Usage
@@ -16,7 +16,7 @@ let map = L.map('map', {
   });
 
 let url = 'https://gherardovarando.github.io/leaflet-multislice/demo/GAD67_tiles/slice{slice}/{z}/{x}/{y}.png';
-let mslayer = L.tileLayer.multiSlice(url,{
+let mslayer = L.tileLayer.ml(url,{
    minSlice: 1,
    maxSlice: 43,
    tileSize: L.point([88,256])
@@ -30,14 +30,14 @@ map.setSlice(10);
 
 ## API
 
-To be able to use the ``TileLayer.MultiSlice`` it is necessary to set the ``multislice`` option to ``true`` in the map creation options.
-Moreover the ``sliceControl`` option controls the presence and position of the slice control.
+To be able to use the ``TileLayer.ml`` it is necessary to set the ``multilevel`` option to ``true`` in the map creation options or to add the multi level Handler.
+Moreover the ``levelControl`` option controls the presence and position of the slice control.
 
 ### ``TileLayer.MultiSlice``
 
 #### Creation
 
-##### ``L.tileLayer.multiSlice(urlTemplate, options)``
+##### ``L.tileLayer.ml(urlTemplate, options)``
 
 - ``urlTemplate`` a string of the following form ``'http://{s}.somedomain.com/{foo}/{slice}/{z}/{x}/{y}.png'``
 - ``options`` as  TileLAyer options and moreover:
