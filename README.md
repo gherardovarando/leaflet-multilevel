@@ -1,5 +1,6 @@
 ## by gherardo.varando <gherardo.varando@gmail.com>
 
+<<<<<<< HEAD
 ## demo at <https://gherardovarando.github.io/leaflet-multilevel/demo>
 
 Multi level plugin for leaflet, the plugin define new methods for the Map object, a new control and new types of layers (``L.layerName.ml``).
@@ -77,6 +78,20 @@ The following events are fired by the ``map`` object
 
 - #### ``slicechange``
    Emitted when the user release the up/down arrow key and the slice value is increased or decreased. The event is not fired if the slice value is not changed (due to maxSlice, minSlice limits)  
+=======
+## demo at <https://gherardovarando.github.io/leaflet-multislice/demo>
+
+
+
+## API
+
+### Creation
+
+
+
+#### Events
+
+>>>>>>> ba2ac6ec99080d800c57dc307c8d1fafc118a297
 
 ### LICENSE
 

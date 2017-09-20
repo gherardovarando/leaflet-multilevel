@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>leaflet-multislice demo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="../leaflet-multislice.js"></script>
+
+</head>
+
+<body>
+
+  <div id="map" style="height:600px; width: 800px;"></div>
+  <h3 > press ctr + arrow up/down to change slice </h3>
+</body>
+
+
+<script>
+  var map = L.map('map', {
+    crs: L.CRS.Simple,
+    zoomControl: true,
+    multislice: true,
+    sliceControl: {
+      position: 'bottomleft'
+    }
+  });
+  var lc = L.control.layers({});
+  map.addControl(lc);
+  var base = L.tileLayer.multiSlice('GAD67_tiles/slice{slice}/{z}/{x}/{y}.png', {
+    maxZoom: 8,
+    minZoom: 0,
+    minSlice: 1,
+    maxSlice: 43,
+    maxNativeZoom: 3,
+    tileSize: L.point([88, 256]),
+    bounds: [
+      [-256, 0],
+      [0, 256]
+    ]
+  });
+  base.addTo(map);
+  lc.addBaseLayer(base, 'base');
+  map.fitWorld();
+  map.setSlice(10);
+</script>
+
+
+</html>
