@@ -8,14 +8,14 @@
   <title>leaflet-multislice demo</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-  <script src="../leaflet-multislice.js"></script>
+  <script src="../leaflet-multilevel.js"></script>
 
 </head>
 
 <body>
 
   <div id="map" style="height:600px; width: 800px;"></div>
-  <h3 > press ctr + arrow up/down to change slice </h3>
+  <h3 > press ctr + arrow up/down to change level </h3>
 </body>
 
 
@@ -23,18 +23,18 @@
   var map = L.map('map', {
     crs: L.CRS.Simple,
     zoomControl: true,
-    multislice: true,
-    sliceControl: {
+    multilevel: true,
+    levelControl: {
       position: 'bottomleft'
     }
   });
   var lc = L.control.layers({});
   map.addControl(lc);
-  var base = L.tileLayer.multiSlice('GAD67_tiles/slice{slice}/{z}/{x}/{y}.png', {
+  var base = L.tileLayer.ml('GAD67_tiles/slice{level}/{z}/{x}/{y}.png', {
     maxZoom: 8,
     minZoom: 0,
-    minSlice: 1,
-    maxSlice: 43,
+    minLevel: 1,
+    maxLevel: 43,
     maxNativeZoom: 3,
     tileSize: L.point([88, 256]),
     bounds: [
@@ -45,7 +45,7 @@
   base.addTo(map);
   lc.addBaseLayer(base, 'base');
   map.fitWorld();
-  map.setSlice(10);
+  map.setLevel(10);
 </script>
 
 
