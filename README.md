@@ -82,15 +82,6 @@ The following events are fired by the ``map`` object
 
 
 
-## API
-
-### Creation
-
-
-
-#### Events
-
-
 ### LICENSE
 
 The MIT License (MIT)
