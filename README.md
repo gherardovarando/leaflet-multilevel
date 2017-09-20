@@ -15,7 +15,7 @@ let map = L.map('map', {
   }
   });
 
-let url = 'https://gherardovarando.github.io/leaflet-multilevel/demo/GAD67_tiles/slice{slice}/{z}/{x}/{y}.png';
+let url = 'https://gherardovarando.github.io/leaflet-multilevel/demo/GAD67_tiles/slice{level}/{z}/{x}/{y}.png';
 let mslayer = L.tileLayer.ml(url,{
    minLevel: 1,
    maxLevel: 43,
@@ -77,9 +77,6 @@ The following events are fired by the ``map`` object
 
 - #### ``levelchange``
    Emitted when the user release the up/down arrow key and the slice value is increased or decreased. The event is not fired if the slice value is not changed (due to maxSlice, minSlice limits)  
-
-## demo at <https://gherardovarando.github.io/leaflet-multilevel/demo>
-
 
 
 ### LICENSE
