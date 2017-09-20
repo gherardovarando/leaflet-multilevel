@@ -1,6 +1,5 @@
 ## by gherardo.varando <gherardo.varando@gmail.com>
 
-<<<<<<< HEAD
 ## demo at <https://gherardovarando.github.io/leaflet-multilevel/demo>
 
 Multi level plugin for leaflet, the plugin define new methods for the Map object, a new control and new types of layers (``L.layerName.ml``).
@@ -10,22 +9,22 @@ The plugin is been developed to visualize mutlislice maps for example created fr
 
 ```
 let map = L.map('map', {
-  multislice: true,
-  sliceControl: {
+  multilevel: true,
+  levelControl: {
     position: 'bottomleft'
   }
   });
 
-let url = 'https://gherardovarando.github.io/leaflet-multislice/demo/GAD67_tiles/slice{slice}/{z}/{x}/{y}.png';
+let url = 'https://gherardovarando.github.io/leaflet-multilevel/demo/GAD67_tiles/slice{slice}/{z}/{x}/{y}.png';
 let mslayer = L.tileLayer.ml(url,{
-   minSlice: 1,
-   maxSlice: 43,
+   minLevel: 1,
+   maxLevel: 43,
    tileSize: L.point([88,256])
   });
 
 mslayer.addTo(map);
 map.fitWorld();
-map.setSlice(10);
+map.setLevel(10);
 
 ```
 
@@ -40,10 +39,10 @@ Moreover the ``levelControl`` option controls the presence and position of the s
 
 ##### ``L.tileLayer.ml(urlTemplate, options)``
 
-- ``urlTemplate`` a string of the following form ``'http://{s}.somedomain.com/{foo}/{slice}/{z}/{x}/{y}.png'``
-- ``options`` as  TileLAyer options and moreover:
-  - ``maxSlice``
-  - ``minSlice``
+- ``urlTemplate`` a string of the following form ``'http://{s}.somedomain.com/{foo}/{level}/{z}/{x}/{y}.png'``
+- ``options`` as  TileLayer options and moreover:
+  - ``maxLevel``
+  - ``minLevel``
 
 
 ***
@@ -51,20 +50,20 @@ Moreover the ``levelControl`` option controls the presence and position of the s
 
 New methods for the ``map`` object
 
-- #### ``getSlice()``
+- #### ``getLevel()``
   Returns the current slice index
 
-- #### ``setSlice(s)``
-  Set the slice value to ``s`` if compatible with the limits.
+- #### ``setLevel(l)``
+  Set the slice value to ``l`` if compatible with the limits.
 
   Returns ``this``.
 
-- #### ``setMaxSlice(max)``
+- #### ``setMaxLevel(max)``
    Set the max slice value to ``max``.
 
    Returns ``this``.
 
-- #### ``setMinSlice(max)``
+- #### ``setMinLevel(min)``
   Set the min slice value to ``min``.
 
   Returns ``this``.
@@ -73,13 +72,13 @@ New methods for the ``map`` object
 
 The following events are fired by the ``map`` object
 
-- #### ``startslicechange``
+- #### ``startslevelchange``
   Emitted when the user press down one of the arrow up/down key with the ctrl key.
 
-- #### ``slicechange``
+- #### ``levelchange``
    Emitted when the user release the up/down arrow key and the slice value is increased or decreased. The event is not fired if the slice value is not changed (due to maxSlice, minSlice limits)  
-=======
-## demo at <https://gherardovarando.github.io/leaflet-multislice/demo>
+
+## demo at <https://gherardovarando.github.io/leaflet-multilevel/demo>
 
 
 
@@ -91,7 +90,6 @@ The following events are fired by the ``map`` object
 
 #### Events
 
->>>>>>> ba2ac6ec99080d800c57dc307c8d1fafc118a297
 
 ### LICENSE
 
