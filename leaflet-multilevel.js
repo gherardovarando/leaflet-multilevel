@@ -35,6 +35,7 @@ if (L != undefined) {
             map._layersMaxLevel.push(this.options.maxLevel);
             map._layersMinLevel.push(this.options.minLevel);
             map.on('levelchange', this._drawlevel, this);
+            map.setLevel(map.getLevel());
         },
 
         onRemove: function(map) {
@@ -68,6 +69,7 @@ if (L != undefined) {
             map._layersMinLevel.push(this.options.minLevel);
             L.TileLayer.prototype.onAdd.call(this, map);
             map.on('levelchange', this.redraw, this);
+            map.setLevel(map.getLevel());
             this.redraw();
         },
 
@@ -148,7 +150,7 @@ if (L != undefined) {
         addHooks: function() {
             L.DomEvent.on(window, 'keydown', this._keyDown, this);
             L.DomEvent.on(window, 'keyup', this._keyUp, this);
-            this._map._level = this._map.options.minLevel || 0;
+            this._map._level = this._map.options.minLevel || null;
             this._map._layersMaxLevel = [];
             this._map._layersMinLevel = [];
             if (this._map.options.levelControl) {
