@@ -1,26 +1,27 @@
 {
-  "name": "leaflet-multislice",
+  "name": "leaflet-multilevel",
   "version": "0.0.1",
-  "description": "multislice leaflet layer",
+  "description": "multilevel leaflet layer",
   "main": "leaflet-multilevel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gherardovarando/leaflet-multislice.git"
+    "url": "git+https://github.com/gherardovarando/leaflet-multilevel.git"
   },
   "keywords": [
     "leaflet",
     "slice",
     "map",
     "tilesLayer",
-    "layer"
+    "layer",
+    "level"
   ],
   "author": "gherardo varando <gherardo.varando@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gherardovarando/leaflet-multislice/issues"
+    "url": "https://github.com/gherardovarando/leaflet-multilevel/issues"
   },
-  "homepage": "https://github.com/gherardovarando/leaflet-multislice#readme"
+  "homepage": "https://github.com/gherardovarando/leaflet-multilevel#readme"
 }
