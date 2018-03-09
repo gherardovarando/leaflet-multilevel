@@ -1,4 +1,4 @@
-## by gherardo.varando <gherardo.varando@gmail.com>
+[![npm version](https://badge.fury.io/js/leaflet-multilevel.svg)](https://badge.fury.io/js/leaflet-multilevel)
 
 ## demo at <https://gherardovarando.github.io/leaflet-multilevel/demo>
 
